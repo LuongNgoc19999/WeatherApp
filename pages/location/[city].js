@@ -1,14 +1,11 @@
 import Head from 'next/head';
 import React from 'react'
 import cities from "../../lib/city.list.json";
-import weather from "../../lib/weather.json";
-import weathers from "../../lib/weathers.json";
 import TodaysWeather from '../../components/TodaysWeather';
 import moment from 'moment-timezone';
 import HourlyWeather from '../../components/HourlyWeather';
 import WeeklyWeather from '../../components/WeeklyWeather';
 import SearchBox from '../../components/SearchBox';
-// import cities from "cities.json";
 export async function getServerSideProps(context) {
     const city = getCity(context.params.city);
     if(!city){
@@ -16,9 +13,9 @@ export async function getServerSideProps(context) {
             notFound: true,
         };
     };
-    const url = `https://openweathermap.org/data/2.5/onecall?lat=${city.coord.lat}&lon=${city.coord.lon}&appid=${process.env.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.coord.lat}&lon=${city.coord.lon}&appid=${process.env.API_KEY}`;
     const res = await fetch(url);
-    const data = weathers//await res.json();
+    const data = await res.json();
 
     if(!data){
         return {

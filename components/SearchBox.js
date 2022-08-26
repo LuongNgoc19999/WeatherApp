@@ -1,21 +1,9 @@
 import React, { useState } from 'react'
-import Link from 'next/link';
 import cities from "../lib/city.list.json";
-import { Router } from 'next/router';
-// import cities from "cities.json";
 export default function SearchBox({placeholder}) {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const [index, setIndex] = useState(0)
-
-    // React.useEffect(() => {
-    //   const clearQuery = () => setQuery("");
-    //   Router.events.on("routeChangeComplete", clearQuery);
-
-    //   return () =>{
-    //     Router.events.off("routeChangeComplete", clearQuery);
-    //   }
-    // }, []);
 
     const setSuggestHandler = (name, country) =>{
         setQuery(name)
