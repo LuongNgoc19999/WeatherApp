@@ -16,7 +16,6 @@ export async function getServerSideProps(context) {
             notFound: true,
         };
     };
-    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.name},${city.country}&APPID=${process.env.API_KEY}`;
     const url = `https://openweathermap.org/data/2.5/onecall?lat=${city.coord.lat}&lon=${city.coord.lon}&appid=${process.env.API_KEY}`;
     const res = await fetch(url);
     const data = weathers//await res.json();
